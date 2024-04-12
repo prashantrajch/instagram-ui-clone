@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Cookie&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.borderColor{
+    background: radial-gradient(rgba(0,0,0,0.15) 60%, transparent 0), radial-gradient(white 65% ,transparent 0),linear-gradient(to top right, orange,deeppink) !important;
+}
+
+.scrollBar{
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+.scrollBar::-webkit-scrollbar{
+    width: 0;
+    height: 0;
+}
