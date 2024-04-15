@@ -17,3 +17,43 @@
     width: 0;
     height: 0;
 }
+
+button.rec{
+    position: absolute;
+    z-index: 2;
+}
+
+.rec.rec-arrow{
+    min-width: 0;
+    width: 30px;
+    height: 30px;
+    line-height: 0;
+    font-size: 18px;
+}
+
+.rec:disabled {
+    visibility: hidden;
+}
+
+.rec.rec-arrow-right{
+    right: 2%;
+    top: 15%;
+}
+
+.rec.rec-arrow-left{
+    left: 2%;
+    top: 15%;
+}
+
+.rec.rec-dot{
+    display: none;
+}
+
+.video-section{
+    scrollbar-width: none;
+    scroll-snap-type: y mandatory;
+}
+
+.video-section::-webkit-scrollbar{
+    display: none;
+}

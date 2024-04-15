@@ -10,7 +10,7 @@ import Avatar from "@mui/material/Avatar";
 
 function MobileNav() {
   return (
-    <nav className="fixed bottom-0 w-full border-t border-slate-200">
+    <nav className="fixed bottom-0 z-10 w-full border-t border-slate-200 bg-white">
       <ul className="flex justify-evenly">
         <NavLink to={"/"} title="Home">
           {({ isActive }) =>

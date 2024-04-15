@@ -1,60 +1,109 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Avatar from "@mui/material/Avatar";
 import Stories from "./Stories";
+import Carousel from "@itseasy21/react-elastic-carousel";
+import PostCard from "./PostCard";
+import PostMenu from "./PostMenu";
+import InstagramContext from "../../context/ContextCreate";
+import PostsData from "../../API Data/PostData";
 
 let storiesData = [
-    {
-        imageSrc: '',
-        userName: 'prashantrajch'
-    },
-    {
-        imageSrc: '',
-        userName: 'kavay_jads'
-    },
-    {
-        imageSrc: '',
-        userName: 'subharm'
-    },
-    {
-        imageSrc: '',
-        userName: 'kajdfasdf'
-    },
-    {
-        imageSrc: '',
-        userName: 'ajhdfdsa'
-    },
-    {
-        imageSrc: '',
-        userName: 'jhadsf'
-    },
-    {
-        imageSrc: '',
-        userName: 'jahdfj'
-    },
-    {
-        imageSrc: '',
-        userName: 'hpoijlk'
-    },
-    {
-        imageSrc: '',
-        userName: 'hpoijlk'
-    },
-    {
-        imageSrc: '',
-        userName: 'hpoijlk'
-    },
-]
+  {
+    imageSrc: "https://picsum.photos/400/?random=1",
+    userName: "prashantrajchasdfjk",
+  },
+  {
+    imageSrc: "https://picsum.photos/400/?random=2",
+    userName: "kavay_jads",
+  },
+  {
+    imageSrc: "https://picsum.photos/400/?random=3",
+    userName: "subharm",
+  },
+  {
+    imageSrc: "https://picsum.photos/400/?random=4",
+    userName: "kajdfasdf",
+  },
+  {
+    imageSrc: "https://picsum.photos/400/?random=5",
+    userName: "ajhdfdsa",
+  },
+  {
+    imageSrc: "https://picsum.photos/400/?random=6",
+    userName: "jhadsf",
+  },
+  {
+    imageSrc: "https://picsum.photos/400/?random=7",
+    userName: "jahdfj",
+  },
+  {
+    imageSrc: "https://picsum.photos/400/?random=8",
+    userName: "hpoijlk",
+  },
+  {
+    imageSrc: "https://picsum.photos/400/?random=1",
+    userName: "hpoijlk",
+  },
+  {
+    imageSrc: "https://picsum.photos/400/?random=8",
+    userName: "hpoijlk",
+  },
+  {
+    imageSrc: "https://picsum.photos/400/?random=1",
+    userName: "hpoijlk",
+  },
+  {
+    imageSrc: "https://picsum.photos/400/?random=3",
+    userName: "hpoijlk",
+  },
+  {
+    imageSrc: "https://picsum.photos/400/?random=4",
+    userName: "hpoijlk",
+  },
+];
+
+const breakPoints = [
+  {
+    width: 400,
+    itemsToShow: 4,
+  },
+  {
+    width: 430,
+    itemsToShow: 5,
+  },
+  {
+    width: 500,
+    itemsToShow: 6, 
+  },
+  {
+    width: 550,
+    itemsToShow: 7
+  }
+];
 
 function MainPost() {
+  const { handlePostMenuClick, postMenuActive } = useContext(InstagramContext);
+
   return (
-    <div className="h-[1000px] xl:flex-1 lg:w-[82%] w-[98%] mx-auto mt-4 overflow-hidden">
-      <div className="stories py-2">
-        <div className="slider-stories overflow-x-auto flex lg:gap-7 md:gap-4 gap-4 scrollBar">
-            {
-                storiesData.map((item) => <Stories item={item}/>)
-            }
-        </div>
+    <div className="max-md:self-center mt-4 max-w-[630px] w-full overflow-hidden">
+      <div className="stories py-2 max-w-[630px] w-full">
+        <Carousel
+          itemsToScroll={8}
+          itemsToShow={8}
+          breakPoints={breakPoints}
+          className="slider-stories relative"
+        >
+          {storiesData.map((item, id) => (
+            <Stories key={id} item={item} />
+          ))}
+        </Carousel>
       </div>
+      <div className="posts flex  flex-col w-full justify-center">
+        {PostsData.map((item) => (
+          <PostCard key={item.id} item={item} />
+        ))}
+      </div>
+      {postMenuActive && <PostMenu />}
     </div>
   );
 }
