@@ -1,12 +1,12 @@
 import React from 'react'
 
-function Stories({item}) {
+function Stories({item,width='60px',height='60px',customStyleName='borderColor'}) {
     const {imageSrc,userName} = item;
 
   return (
-          <div className="slider max-w-[60px] text-center">
-            <div className="slider-img w-[60px] h-[60px] rounded-full inline-block overflow-hidden p-[4px]  borderColor">
-              <img src={imageSrc} alt="" className="block w-full h-full object-cover rounded-full" />
+          <div className={`slider max-w-[${width}] text-center`}>
+            <div className={`slider-img w-[${width}] h-[${height}] rounded-full inline-block overflow-hidden p-[4px] ${customStyleName}`}>
+              <img src={imageSrc} alt="" className="block w-full object-cover rounded-full" />
             </div>
             <div className="slider-name">
               <p className='text-xs line-clamp-1'>{userName}</p>

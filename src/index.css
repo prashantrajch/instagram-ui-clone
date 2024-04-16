@@ -49,11 +49,11 @@ button.rec{
     display: none;
 }
 
-.video-section{
+.scrollBar{
     scrollbar-width: none;
     scroll-snap-type: y mandatory;
 }
 
-.video-section::-webkit-scrollbar{
+.scrollBar::-webkit-scrollbar{
     display: none;
 }

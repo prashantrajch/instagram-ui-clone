@@ -22,12 +22,14 @@ function Navbar() {
     create: false,
   });
   const [activeIcon, setActiveIcon] = useState(false);
+  const [customWidth, setCustomWidth] = useState(false);
 
   function handleNavLinkCliced(ev) {
     linkActive && (ev.isActive = false);
   }
 
   function handleCustomNavLinkClicked(value) {
+    setCustomWidth(!customWidth);
     if (value == "search") {
       setActiveIcon(false);
       setComponent({
@@ -53,17 +55,24 @@ function Navbar() {
         notification: false,
       });
       setActiveIcon(false);
-      setLinkActive(false)
+      setLinkActive(false);
     }
   }
 
-  function handleToggleActive() {
+  function handleToggleActive(ev, name) {
     setLinkActive(false);
+    setCustomWidth(false);
+    if (name) {
+    }
   }
 
   return (
-    <nav className="h-screen bg-white relative">
-      <div className="bigMenu pt-2 pb-5 px-3 fixed z-20 flex-col flex h-full bg-white">
+    <nav className="h-screen bg-white relative w-full">
+      <div
+        className={`bigMenu pt-2 pb-5 px-3 fixed z-20 flex-col ${
+          customWidth ? "xl:w-[76px]" : " xl:w-[238px]"
+        } flex h-full bg-white overflow-hidden`}
+      >
         <div className="xl:block hidden">
           <div
             className={
@@ -192,7 +201,8 @@ function Navbar() {
             <NavLink
               to={"/message"}
               className={handleNavLinkCliced}
-              onClick={handleToggleActive}
+              onClick={() => handleToggleActive("", "message")}
+              id="message"
             >
               {({ isActive }) =>
                 isActive ? (
@@ -251,7 +261,7 @@ function Navbar() {
           </li>
           <li>
             <NavLink
-              to={"/profile"}
+              to={"/prashant_raj_ch"}
               className={handleNavLinkCliced}
               onClick={handleToggleActive}
             >
